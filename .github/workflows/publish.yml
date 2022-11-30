@@ -1,0 +1,37 @@
+name: Publish to NPM
+
+on:
+  push 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install dependencies and build 🔧
+        run: npm ci
+
+      
+      - name: Build package for NPM 📦
+        run: npm run-script autopublish
+      - name: Publish on NPM 📦
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npm_publish }}
+          GITHUB_TOKEN: ${{ secrets.GIT_TOCKEN }}
+          USER_Name: atikur-rabbi
+          REPO_name: lwc-components-at
+
+      - name: Push to github
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Autoupdate version [actions skip]"
+          git push

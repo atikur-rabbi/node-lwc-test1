@@ -22,6 +22,18 @@
     "rollup": "^2.79.0",
     "serve": "^14.0.1"
   },
+  "lwc": {
+      "modules": [
+          {
+              "dir": "src/modules"
+          }
+      ]
+  },
+  "volta": {
+      "node": "16.17.0",
+      "yarn": "1.22.19"
+  },
+
   "author": "Atikur Rabbi",
   "license": "ISC"
 }

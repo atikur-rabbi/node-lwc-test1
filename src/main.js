@@ -1,5 +1,10 @@
-import Header from 'c/header';
-import Assets from 'c/at_assets';
+import App from "c/app";
+import Header from "c/header"
+import UserCard from "c/userCard"
 
+customElements.define('c-app', App.CustomElementConstructor);
 customElements.define('c-header', Header.CustomElementConstructor);
-customElements.define('c-at_assets', Assets.CustomElementConstructor);
+customElements.define('c-user-card', UserCard.CustomElementConstructor);
+
+
+// document.body.appendChild(document.createElement('x-app'));
